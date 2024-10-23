@@ -20,8 +20,13 @@ export default function NovaNoticia(){
         const descricao = evento.target.descricao.value;
         const conteudo = evento.target.conteudo.value;
         const imagem = evento.target.imagem.value;
-        alert(titulo+descricao+conteudo+imagem)
-        alert("Noticia inserida com sucesso, titulo: "+ titulo)
+
+        const response = await fetch('/api', {
+            method: "POST",body: JSON.stringify({titulo,descricao,conteudo,imagem})
+        })
+
+        const noticia = await response.json();
+
 
     }
 

@@ -1,19 +1,10 @@
+import prisma from "@/lib/prisma";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
 
-  const noticias = [
-    {
-      id:"1",
-      titulo:"Noticia Teste",
-      descricao:"Uma noticia"
-    },
-    {
-      id: "2",
-      titulo: "Noticia Testando",
-      descricao: "Uma noticia"
-    },
-  ]
+  const noticias = await prisma.noticia.findMany({});
+  
   return(
     <div className="w-full px-4 py-8">
       <header className="mb-8">
